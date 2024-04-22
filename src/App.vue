@@ -1,85 +1,68 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <div class="container">
+    <header class="header">
+      <img 
+        class="logo"
+        src="./assets/logo.webp" alt="">
+      <input type="text" name="" id="" class="search">
+      <p>인물</p>
+      <p>카테고리</p>
+    </header>
+    <div class="main-banner">
+      banner
     </div>
-  </header>
-
-  <RouterView />
+    <div class="main-contents">
+      contents
+    </div>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
+.container {
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+  background-color: white;
 }
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.header {
+  height: calc((100vw / 1920) * 164.86);
+  display: flex;
+  align-items: start;
+  justify-content:space-between;
+  padding-left: calc((100vw / 1920) * 69.2);
+  padding-right: calc((100vw / 1920) * 41.58);
 }
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.logo {
+  position: relative;
+  width: calc((100vw / 1920) * 545);
+  height: calc((100vw / 1920) * 105);
+  top: calc((100vw / 1920) * 31.88);
 }
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.search {
+  position: relative;
+  top: calc((100vw / 1920) * 47.48);
+  width: calc((100vw / 1920) * 892);
+  height: calc((100vw / 1920) * 55);
+  border: 2px solid #000000;
+  opacity: 1;
+  font-size: calc(25rem / 16);
 }
-
-nav a:first-of-type {
-  border: 0;
+.container p {
+  position: relative;
+  top: calc((100vw / 1920) * 59.71);
+  letter-spacing: -0.95px;
+  color: #000000;
+  opacity: 1;
+  font-size: calc(25rem / 16);
 }
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.main-banner {
+  position: relative;
+  left: calc((100vw / 1920) * 53);
+  width: calc((100vw / 1920) * 1826);
+  height: calc((100vw / 1920) * 484);
+  border: 5px solid #000000;
+  opacity: 1;
+  background-color: grey;
 }
 </style>
