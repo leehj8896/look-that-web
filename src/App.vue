@@ -42,53 +42,59 @@
 
 <style scoped>
 .container {
-  width: 100%;
+  width: inherit;
   background-color: white;
 }
 .header {
-  height: calc((100vw / 1920) * 164.86);
+  height: 164.86px;
+  width: inherit;
   display: flex;
   align-items: start;
   justify-content:space-between;
-  padding-left: calc((100vw / 1920) * 69.2);
-  padding-right: calc((100vw / 1920) * 41.58);
+  padding-left: 41.58px;
+  padding-right: 69.23px;
 }
 .logo {
   position: relative;
-  width: calc((100vw / 1920) * 545);
-  height: calc((100vw / 1920) * 105);
-  top: calc((100vw / 1920) * 31.88);
+  width: 545px;
+  height: 105px;
+  top: 31.88px;
 }
 .search {
   position: relative;
-  top: calc((100vw / 1920) * 47.48);
-  width: calc((100vw / 1920) * 892);
-  height: calc((100vw / 1920) * 55);
+  top: 47.48px;
+  width: 892px;
+  height: 55px;
   border: 2px solid #000000;
   opacity: 1;
   font-size: calc(25 / 16 * 1rem);
 }
 .header p {
   position: relative;
-  top: calc((100vw / 1920) * 59.71);
+  top: 60px;
   letter-spacing: -0.95px;
   color: #000000;
   opacity: 1;
   font-size: calc(25 / 16 * 1rem);
 }
 .main-banner {
-  position: relative;
-  left: calc((100vw / 1920) * 53);
-  width: calc((100vw / 1920) * 1826);
-  height: calc((100vw / 1920) * 484);
+  margin-left: 53px;
+  margin-right: 42px;
+  width: 1826px;
+  height: 484px;
   border: 5px solid #000000;
   opacity: 1;
   background-color: grey;
 }
 .main-contents {
-  margin-top: calc(74.03 / 1920 * 100vw);
-  padding-left: calc(100vw * (60.72 / 1920));
-  padding-right: calc(100vw * (43.12 / 1920));
+  margin-top: 74.03px;
+  /* padding-left: 60.72px; */
+  /* padding-right: 43.12px; */
+}
+.look-items-container {
+  margin-left: 61px;
+  margin-right: 43px;
+  margin-bottom: 98px;
 }
 .look-items-title {
   margin: 0;
@@ -96,22 +102,23 @@
 }
 .look-items-description {
   font-size: calc(20 / 16 * 1rem);
-  margin-bottom: calc(10.47 / 1920 * 100vw);
+  margin-bottom: 10.47px;
 }
 .look-grid-container {
   display: grid;
+  column-gap: 74px;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 1fr);
 }
 .look-grid-item {
-  height: calc((365 + 23 + 80) / 1920 * 100vw);
-  width: calc(304 / 1920 * 100vw);
-  margin-bottom: calc(23.32 / 1920 * 100vw);
+  height: calc((365 + 23 + 80)px);
+  width: 304px;
+  margin-bottom: 23.32px;
 }
 .look-image {
   background-color: gray;
-  height: calc(365 / 1920 * 100vw);
-  width: calc(304 / 1920 * 100vw);
-  margin-bottom: calc(28.1 / 1920 * 100vw);
+  height: 365px;
+  width: 304px;
+  margin-bottom: 28.1px;
 }
 </style>

@@ -37,6 +37,7 @@
 
 body, p {
   margin: 0;
+  width: fit-content;
 }
 div {
   box-sizing: border-box;
