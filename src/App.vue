@@ -37,6 +37,12 @@
         </div>
       </div>
     </div>
+    <button class="top-btn">TOP</button>
+    <nav class="navbar">
+      <p>HOME</p>
+      <p>CHARACTER</p>
+      <p>CATEGORY</p>
+    </nav>
   </div>
 </template>
 
@@ -136,5 +142,29 @@
 }
 .person-name, .brand-names {
   font-family: 'Danjo-bold-Regular';
+}
+.top-btn {
+  font-family: 'Copperplate';
+  width: 173px;
+  height: 60px;
+  background-color: #FF671E;
+  position: fixed;
+  bottom: 92px;
+  right: 32px;
+  font-size: calc(27 / 16 * 1rem);
+}
+.navbar {
+  width: 100%;
+  height: 73px;
+  background-color: #6BFF00;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.navbar p {
+  font-size: calc(30 / 16 * 1rem);
+  font-family: 'Copperplate';
 }
 </style>
