@@ -21,7 +21,7 @@
         v-bind:key="index"
       >
         <h1 class="look-items-title">
-          LATEST Look 최신 룩{{ item }} +
+          LATEST Look{{ item }} <span>+</span>
         </h1>
         <p class="look-items-description">최신 룩</p>
         <div class="look-grid-container">
@@ -41,6 +41,13 @@
 </template>
 
 <style scoped>
+@import url('https://fonts.cdnfonts.com/css/copperplate');
+@font-face {
+    font-family: 'Danjo-bold-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Danjo-bold-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 .container {
   width: inherit;
   background-color: white;
@@ -70,6 +77,7 @@
   font-size: calc(25 / 16 * 1rem);
 }
 .header p {
+  font-family: 'Danjo-bold-Regular';
   position: relative;
   top: 60px;
   letter-spacing: -0.95px;
@@ -97,10 +105,15 @@
   margin-bottom: 98px;
 }
 .look-items-title {
+  font-family: 'Copperplate';
   margin: 0;
   font-size: calc(27 / 16 * 1rem);
 }
+.look-items-title span {
+  font-family: 'Danjo-bold-Regular'; 
+}
 .look-items-description {
+  font-family: 'Danjo-bold-Regular';
   font-size: calc(20 / 16 * 1rem);
   margin-bottom: 10.47px;
 }
@@ -120,5 +133,8 @@
   height: 365px;
   width: 304px;
   margin-bottom: 28.1px;
+}
+.person-name, .brand-names {
+  font-family: 'Danjo-bold-Regular';
 }
 </style>
