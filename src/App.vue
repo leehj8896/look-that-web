@@ -35,13 +35,23 @@
             <p class="brand-names">샤넬,샤넬,샤넬,샤넬,샤넬</p>
           </div>
         </div>
+        <p class="look-items-arrow">↓</p>
       </div>
     </div>
-    <button class="top-btn">TOP</button>
+    <button class="top-btn">↑ TOP ↑</button>
     <nav class="navbar">
-      <p>HOME</p>
-      <p>CHARACTER</p>
-      <p>CATEGORY</p>
+      <div>
+        <span class="navbar-arrow">→</span>
+        <span class="navbar-text">HOME</span>
+      </div>
+      <div>
+        <span class="navbar-arrow">→</span>
+        <span class="navbar-text">CHARACTER</span>
+      </div>
+      <div>
+        <span class="navbar-arrow">→</span>
+        <span class="navbar-text">CATEGORY</span>
+      </div>
     </nav>
   </div>
 </template>
@@ -143,6 +153,11 @@
 .person-name, .brand-names {
   font-family: 'Danjo-bold-Regular';
 }
+.look-items-arrow {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 80px;
+}
 .top-btn {
   font-family: 'Copperplate';
   width: 173px;
@@ -152,6 +167,8 @@
   bottom: 92px;
   right: 32px;
   font-size: calc(27 / 16 * 1rem);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  border: 0;
 }
 .navbar {
   width: 100%;
@@ -162,9 +179,15 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-}
-.navbar p {
-  font-size: calc(30 / 16 * 1rem);
   font-family: 'Copperplate';
+}
+.navbar-arrow {
+  font-size: 50px;
+  margin-right: 10px;
+}
+.navbar-text {
+  font-size: 30px;
+  position: relative;
+  bottom: 10px;
 }
 </style>
