@@ -1,25 +1,49 @@
 <script setup lang="ts">
-import { useRouter, useRoute } from 'vue-router'
+import { onBeforeMount, onMounted } from 'vue';
+import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 
 const router = useRouter()
-const route = useRoute()
+const bannerItems = ref([
+  {
+    imageUrl: 'http://3.34.132.124:8080/banner/img/1234.png'
+  }
+])
 
 const onClickLookItem = (lookItem: any) => {
   console.log('onClickLookItem', 'lookItem', lookItem)
   router.push({
     name: 'look-detail',
     query: {
-      ...route.query,
+      // ...route.query,
       // ...query,
     },
   })
 }
+
+onBeforeMount(async () => {
+  console.log('HomeView > onBeforeMount')
+  const response = await fetch('http://3.34.132.124:8080/banner/list')
+  const data = await response.json()
+  console.log('data', data)
+
+  bannerItems.value = data
+})
+
+onMounted(async () => {
+  console.log('HomeView > onMounted')
+})
 </script>
 
 <template>
-  <div class="main-banner">
-    banner
-  </div>
+  <v-carousel class="main-banner">
+    <v-carousel-item
+      cover
+      v-bind:src="'http://3.34.132.124:8080/banner/img/1234.png'"
+      v-for="(bannerItem, index) in bannerItems" :key="index"
+    >
+    </v-carousel-item>
+  </v-carousel>
   <div class="main-contents">
     <div
       class="look-items-container"
