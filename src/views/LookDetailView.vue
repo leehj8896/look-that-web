@@ -29,53 +29,53 @@
 
 <style scoped>
 .detail-container {
-  padding-left: 104px;
-  padding-bottom: 100px;
+  padding-left: calc(104/1920*100vw);
+  padding-bottom: calc(100/1920*100vw);
 }
 .look-info-container {
-  margin-bottom: 60px;
+  margin-bottom: calc(60/1920*100vw);
 }
 .full-image-box {
-  width: 587px;
-  height: 739px;
+  width: calc(587 / 1920 * 100vw);
+  height: calc(739 / 1920 * 100vw);
   background-color: grey;
   display: inline-block;
   vertical-align: top;
 }
 .part-image-box {
-  width: 390px;
-  height: 739px;
+  width: calc(390 / 1920 * 100vw);
+  height: calc(739 / 1920 * 100vw);
   background-color: red;
   display: inline-block;
   vertical-align: top;
-  margin-left: 12.8px;
+  margin-left: calc(12.8 / 1920 * 100vw);
 }
 .informations-box {
-  width: 659px;
-  height: 866px;
+  width: calc(659/1920*100vw);
+  height: calc(866/1920*100vw);
   background-color: blue;
   display: inline-block;
   vertical-align: top;
-  margin-left: 58.46px;
+  margin-left: calc(58/1920*100vw);
 }
 .collection-container {
-  margin-bottom: 70px;
+  margin-bottom: calc(70/1920*100vw);
 }
 .collection-title {
   font-family: 'Danjo-bold-Regular';
-  font-size: 25px;
+  font-size: calc(25/1920*100vw);
 }
 .collection-flex {
-  height: 485px;
-  margin-top: 65px;
+  height: calc(485/1920*100vw);
+  margin-top: calc(65/1920*100vw);
   display: flex;
   flex-direction: row;
-  gap: 98.32px;
+  gap: calc(98/1920*100vw);
   overflow: scroll;
 }
 .collection-image {
-  width: 405px;
-  height: 485px;
+  width: calc(405/1920*100vw);
+  height: calc(485/1920*100vw);
   background-color: grey;
   flex-shrink: 0;
 }
