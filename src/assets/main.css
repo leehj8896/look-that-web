@@ -18,5 +18,5 @@ div, p, header {
 }
 
 #app {
-  width: 1920px;
+  width: 100vw;
 }

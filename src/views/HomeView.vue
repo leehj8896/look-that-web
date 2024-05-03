@@ -73,61 +73,74 @@ onMounted(async () => {
 
 <style scoped>
 .main-banner {
-  margin-left: 53px;
+  /* margin-left: 53px; */
+  margin-left: calc(53 / 1920 * 100vw);
   margin-right: 42px;
-  width: 1826px;
-  height: 484px;
+  /* width: 1826px; */
+  width: calc(1826 / 1920 * 100vw);
+  /* height: 484px; */
+  height: calc(484 / 1920 * 100vw) !important;
   border: 5px solid #000000;
   opacity: 1;
-  background-color: grey;
 }
 .main-contents {
-  margin-top: 74.03px;
-  /* padding-left: 60.72px; */
-  /* padding-right: 43.12px; */
+  /* margin-top: 74.03px; */
+  margin-top: calc(74 / 1920 * 100vw);
 }
 .look-items-container {
-  margin-left: 61px;
-  margin-right: 43px;
-  margin-bottom: 98px;
+  /* margin-left: 61px; */
+  margin-left: calc(61 / 1920 * 100vw);
+  /* margin-right: 43px; */
+  margin-right: calc(43 / 1920 * 100vw);
+  /* margin-bottom: 98px; */
+  margin-bottom: calc(98 / 1920 * 100vw);
 }
 .look-items-title {
   font-family: 'Copperplate';
   margin: 0;
-  font-size: calc(27 / 16 * 1rem);
+  font-size: calc(27 / 1920 * 100vw);
 }
 .look-items-title span {
   font-family: 'Danjo-bold-Regular'; 
 }
 .look-items-description {
   font-family: 'Danjo-bold-Regular';
-  font-size: calc(20 / 16 * 1rem);
+  font-size: calc(20 / 1920 * 100vw);
   margin-bottom: 10.47px;
 }
 .look-grid-container {
   display: grid;
-  column-gap: 74px;
+  /* column-gap: 74px; */
+  column-gap: calc(74 / 1920 * 100vw);
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 1fr);
 }
 .look-grid-item {
-  height: calc((365 + 23 + 80)px);
-  width: 304px;
-  margin-bottom: 23.32px;
+  /* height: calc((365 + 23 + 80)px); */
+  height: calc((365 + 23 + 80) / 1920 * 100vw);
+  /* width: 304px; */
+  width: calc(304 / 1920 * 100vw);
+  /* margin-bottom: 23.32px; */
+  margin-bottom: calc(23 / 1920 * 100vw);
 }
 .look-image {
   background-color: gray;
-  height: 365px;
-  width: 304px;
-  margin-bottom: 28.1px;
+  /* height: 365px; */
+  height: calc(365 / 1920 * 100vw);
+  /* width: 304px; */
+  width: calc(304/1920*100vw);
+  /* margin-bottom: 28.1px; */
+  margin-bottom: calc(28 / 1920 * 100vw);
 }
 .person-name, .brand-names {
   font-family: 'Danjo-bold-Regular';
+  font-size: calc(14 / 1920 * 100vw);
 }
 .look-items-arrow {
   margin-left: auto;
   margin-right: auto;
-  font-size: 80px;
+  /* font-size: 80px; */
+  font-size: calc(80 / 1920 * 100vw);
   width: fit-content;
 }
 </style>
