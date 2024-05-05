@@ -1,14 +1,22 @@
 <script setup lang="ts">
-import { onBeforeMount, onMounted } from 'vue';
+import { onBeforeMount, onMounted, type Ref } from 'vue';
 import { useRouter } from 'vue-router'
 import { ref } from 'vue'
+import { constants } from '@/constants';
+import { fetchData } from '@/utils';
+import { urls } from '@/urls';
+import type { MainBanner, LatestLook, ResLookMainPage } from '@/types';
 
 const router = useRouter()
-const bannerItems = ref([
+let bannerItems: Ref<any> = ref([
   {
-    imageUrl: 'http://3.34.132.124:8080/banner/img/1234.png'
-  }
+    bannerId: '',
+    imageUrl: `@/assets/main_banner_default.png`,
+    linkUrl: '',
+  },
 ])
+const latestLookItems: Ref<any> = ref()
+const popularLookItems: Ref<any> = ref()
 
 const onClickLookItem = (lookItem: any) => {
   console.log('onClickLookItem', 'lookItem', lookItem)
@@ -21,17 +29,27 @@ const onClickLookItem = (lookItem: any) => {
   })
 }
 
-onBeforeMount(async () => {
-  console.log('HomeView > onBeforeMount')
-  const response = await fetch('http://3.34.132.124:8080/banner/list')
-  const data = await response.json()
-  console.log('data', data)
+const setBannerData = async () => {
+  const bannerList = await fetchData({ path: urls.bannerList, })
+  bannerItems.value = bannerList
+}
 
-  bannerItems.value = data
-})
+const setLookItemsData = async () => {
+  const lookItems: ResLookMainPage = await fetchData({ path: urls.lookMainPage, })
+  latestLookItems.value = [
+    ...lookItems.latestLookList,
+    ...lookItems.latestLookList,
+  ]
+  popularLookItems.value = [
+    ...lookItems.popularLookList,
+    ...lookItems.popularLookList,
+  ]
+}
 
 onMounted(async () => {
-  console.log('HomeView > onMounted')
+  console.log('HomeView > onBeforeMount')
+  setBannerData()
+  setLookItemsData()
 })
 </script>
 
@@ -39,7 +57,7 @@ onMounted(async () => {
   <v-carousel class="main-banner">
     <v-carousel-item
       cover
-      v-bind:src="'http://3.34.132.124:8080/banner/img/1234.png'"
+      v-bind:src="`${constants.API_URL}/banner/img/1234.png`"
       v-for="(bannerItem, index) in bannerItems" :key="index"
     >
     </v-carousel-item>
@@ -47,23 +65,58 @@ onMounted(async () => {
   <div class="main-contents">
     <div
       class="look-items-container"
-      v-for="(item, index) in [1, 2, 3]"
-      v-bind:key="index"
     >
       <h1 class="look-items-title">
-        LATEST Look{{ item }} <span>+</span>
+        LATEST Look <span>+</span>
       </h1>
       <p class="look-items-description">최신 룩</p>
       <div class="look-grid-container">
         <div
           class="look-grid-item"
-          v-for="(item, index) in [0,1,2,3,4,5,6,7,8,9]"
+          v-bind:style="{
+            marginRight: index % 5 === 4 ?
+              '0' :
+              'calc(74 / 1920 * 100vw)'
+          }"
+          v-for="(item, index) in latestLookItems"
           v-bind:key="index"
           v-on:click="onClickLookItem(item)"
         >
-          <div src="" alt="" class="look-image"></div>
-          <p class="person-name">다니엘</p>
-          <p class="brand-names">샤넬,샤넬,샤넬,샤넬,샤넬</p>
+          <img
+            class="look-image"
+            v-bind:src="`${constants.API_URL}${item.lookList[0].imageUrlList[0]}`"
+          >
+          <p class="person-name">{{ item.celebrity.name }}</p>
+          <p class="brand-names">{{ item.lookList[0].itemList.map((e:any) => e.item.brandName).join(',') }}</p>
+        </div>
+      </div>
+      <p class="look-items-arrow">↓</p>
+    </div>
+    <div
+      class="look-items-container"
+    >
+      <h1 class="look-items-title">
+        Popular Look <span>+</span>
+      </h1>
+      <p class="look-items-description">인기 룩</p>
+      <div class="look-grid-container">
+        <div
+          class="look-grid-item"
+          v-bind:style="{
+            marginRight: index % 5 === 4 ?
+              '0' :
+              'calc(74 / 1920 * 100vw)'
+          }"
+          v-for="(item, index) in popularLookItems"
+          v-bind:key="index"
+          v-on:click="onClickLookItem(item)"
+        >
+          <img
+            class="look-image"
+            v-bind:src="`${constants.API_URL}${item.lookList[0].imageUrlList[0]}`"
+          >
+          <p class="person-name">{{ item.celebrity.name }}</p>
+          <p class="brand-names">{{ item.lookList[0].itemList.map((e:any) => e.item.brandName).join(',') }}</p>
         </div>
       </div>
       <p class="look-items-arrow">↓</p>
@@ -109,13 +162,13 @@ onMounted(async () => {
   margin-bottom: 10.47px;
 }
 .look-grid-container {
-  display: grid;
   /* column-gap: 74px; */
-  column-gap: calc(74 / 1920 * 100vw);
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  /* column-gap: calc(74 / 1920 * 100vw); */
+  /* grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr); */
 }
 .look-grid-item {
+  display: inline-block;
   /* height: calc((365 + 23 + 80)px); */
   height: calc((365 + 23 + 80) / 1920 * 100vw);
   /* width: 304px; */
@@ -135,6 +188,9 @@ onMounted(async () => {
 .person-name, .brand-names {
   font-family: 'Danjo-bold-Regular';
   font-size: calc(14 / 1920 * 100vw);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .look-items-arrow {
   margin-left: auto;
