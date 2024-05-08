@@ -94,7 +94,7 @@ setLookItemsData()
           <p class="brand-names">{{ item.lookList[0].itemList.map((e:any) => e.item.brandName).join(',') }}</p>
         </div>
       </div>
-      <p class="look-items-arrow">↓</p>
+      <img class="look-items-arrow" src="@/assets/arrow_down.webp" alt="">
     </div>
     <div
       class="look-items-container"
@@ -123,7 +123,7 @@ setLookItemsData()
           <p class="brand-names">{{ item.lookList[0].itemList.map((e:any) => e.item.brandName).join(',') }}</p>
         </div>
       </div>
-      <p class="look-items-arrow">↓</p>
+      <img class="look-items-arrow" src="@/assets/arrow_down.webp" alt="">
     </div>
   </div>
 </template>
@@ -200,8 +200,8 @@ setLookItemsData()
 .look-items-arrow {
   margin-left: auto;
   margin-right: auto;
-  /* font-size: 80px; */
-  font-size: calc(80 / 1920 * 100vw);
-  width: fit-content;
+  width: calc(25 / 1920 * 100vw);
+  height: calc(52 / 1920 * 100vw);
+  display: block;
 }
 </style>
