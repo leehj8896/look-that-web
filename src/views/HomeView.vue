@@ -5,7 +5,7 @@ import { ref } from 'vue'
 import { constants } from '@/constants';
 import { fetchData } from '@/utils';
 import { urls } from '@/urls';
-import type { MainBanner, LatestLook, ResLookMainPage } from '@/types';
+import type { MainBanner, LatestLook, ResLookMainPage, PopularLook } from '@/types';
 
 const router = useRouter()
 let bannerItems: Ref<any> = ref([
@@ -18,13 +18,16 @@ let bannerItems: Ref<any> = ref([
 const latestLookItems: Ref<any> = ref()
 const popularLookItems: Ref<any> = ref()
 
-const onClickLookItem = (lookItem: any) => {
+const onClickLookItem = (lookItem: LatestLook | PopularLook) => {
   console.log('onClickLookItem', 'lookItem', lookItem)
   router.push({
     name: 'look-detail',
     query: {
       // ...route.query,
       // ...query,
+    },
+    params: {
+      lookId: lookItem.lookPostId,
     },
   })
 }
@@ -46,11 +49,12 @@ const setLookItemsData = async () => {
   ]
 }
 
-onMounted(async () => {
-  console.log('HomeView > onBeforeMount')
-  setBannerData()
-  setLookItemsData()
-})
+setBannerData()
+setLookItemsData()
+
+// onMounted(async () => {
+//   console.log('HomeView > onBeforeMount')
+// })
 </script>
 
 <template>
@@ -155,6 +159,7 @@ onMounted(async () => {
 }
 .look-items-title span {
   font-family: 'Danjo-bold-Regular'; 
+  font-size: calc(23 / 1920 * 100vw);
 }
 .look-items-description {
   font-family: 'Danjo-bold-Regular';

@@ -11,7 +11,7 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/look-detail',
+      path: '/look-detail/:lookId',
       name: 'look-detail',
       component: LookDetailView
     },
