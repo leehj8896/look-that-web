@@ -7,7 +7,10 @@
       <img 
         class="logo"
         src="./assets/logo.webp" alt="">
-      <input type="text" name="" id="" class="search">
+      <div class="search">
+        <img class="search-icon" src="./assets/search_icon.webp">
+        <input type="text" name="" id="" class="search-input">
+      </div>
       <p>인물</p>
       <p>카테고리</p>
     </header>
@@ -55,7 +58,7 @@
   /* width: 545px; */
   width: calc(545 / 1920 * 100vw);
   /* height: 105px; */
-  height: calc(105 / 1920 * 100vw);
+  height: calc(120 / 1920 * 100vw);
   /* top: 31.88px; */
   top: calc(32 / 1920 * 100vw);
 }
@@ -69,7 +72,21 @@
   height: calc(55/1920*100vw);
   border: 2px solid #000000;
   opacity: 1;
+}
+.search-icon {
+  height: calc(40 / 1920 * 100vw);
+  width: calc(40 / 1920 * 100vw);
+  margin-top: calc(6 / 1920 * 100vw);
+  margin-left: calc(9 / 1920 * 100vw);
+}
+.search-input {
+  height: 90%;
+  position: absolute;
+  top: 0;
   font-size: calc(25 / 16 * 1rem);
+  border: none; /* 테두리 없애기 */
+  outline: none; /* 클릭 시 하이라이트 없애기 */
+  width: calc(800 / 1920 * 100vw);
 }
 .header p {
   font-family: 'Danjo-bold-Regular';
