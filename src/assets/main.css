@@ -20,3 +20,10 @@ div, p, header {
 #app {
   width: 100vw;
 }
+
+.kor {
+  font-family: 'Dango-bold-Regular';
+}
+.eng {
+  font-family: 'Copperplate';
+}
