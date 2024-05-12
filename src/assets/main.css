@@ -27,3 +27,7 @@ div, p, header {
 .eng {
   font-family: 'Copperplate';
 }
+
+.main-banner .v-window__container {
+  height: 100%;
+}

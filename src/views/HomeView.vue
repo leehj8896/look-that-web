@@ -99,8 +99,9 @@ setLookItemsData()
       v-on:click="onClickBannerArrow('right')"
     >
     </div>
-    <div class="delimiters">
-      <button
+    <div class="delimiter-flex">
+      <div
+        class="delimiter-item"
         v-for="(bannerItem, index) in bannerItems" :key="`delimiter-${index}`"
         v-on:click="onClickDelimiter(index)"
       >
@@ -112,7 +113,7 @@ setLookItemsData()
           src="@/assets/banner_delimiter_not_selected.webp"
           v-else
         >
-      </button>
+      </div>
     </div>
   </v-carousel>
   <div class="main-contents">
@@ -209,15 +210,25 @@ setLookItemsData()
   height: 100%;
   width: 20%;
 }
-.delimiters {
+.delimiter-flex {
   position: absolute;
-  bottom: calc(20 / 1920 * 100vw);
-  left: 50%;
-  transform: translate(-50%, 0);
+  bottom: calc(0 / 1920 * 100vw);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: calc(10 / 1920 * 100vw);
 }
-.delimiters button {
-  background: none;
-  border: none;
+.delimiter-item {
+  height: calc(30 / 1920 * 100vw);
+  width: calc(30 / 1920 * 100vw);
+  position: relative;
+}
+.delimiter-item img {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
 }
 .main-contents {
   /* margin-top: 74.03px; */
