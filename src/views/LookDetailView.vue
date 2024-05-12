@@ -24,9 +24,20 @@ const setLookDetailData = async () => {
     return `${constants.API_URL}${partItem.item.imageUrl}`
   })
   itemInfoList.value = lookDetailData.lookList[0].itemList.map((partItem: any) => {
+    if (partItem.item.unit === 'won') {
+      return {
+        title: partItem.item.brandName,
+        content: `${partItem.item.name} ${partItem.item.price} won`,
+      }
+    } else if (partItem.item.unit === 'dollar') {
+      return {
+        title: partItem.item.brandName,
+        content: `${partItem.item.name} $${partItem.item.price}`,
+      }
+    }
     return {
-      title: partItem.item.brandName,
-      content: `${partItem.item.name} ${partItem.item.price} Won`,
+      title: '',
+      content: '',
     }
   })
 }
@@ -165,8 +176,11 @@ onBeforeMount(async () => {
   margin-left: calc(20/1920*100vw);
   margin-bottom: calc(25/1920*100vw);
 }
+.information-title span {
+  font-size: calc(30 / 1920 * 100vw);
+}
 .information-item {
-  margin-bottom: calc(20/1920*100vw);
+  margin-bottom: calc(24 / 1920 * 100vw);
 }
 .information-brand {
   font-size: calc(28/1920*100vw);
@@ -183,6 +197,9 @@ onBeforeMount(async () => {
   font-family: 'Danjo-bold-Regular';
   font-size: calc(25/1920*100vw);
 }
+.collection-title span {
+  font-size: calc(22 / 1920 * 100vw);
+}
 .collection-flex {
   height: calc(485/1920*100vw);
   margin-top: calc(65/1920*100vw);
@@ -190,6 +207,9 @@ onBeforeMount(async () => {
   flex-direction: row;
   gap: calc(98/1920*100vw);
   overflow: scroll;
+}
+.collection-flex::-webkit-scrollbar {
+  display: none; /* 웹킷(Chrome, Safari) 브라우저에서 스크롤바 감추기 */
 }
 .collection-image {
   width: calc(405/1920*100vw);
