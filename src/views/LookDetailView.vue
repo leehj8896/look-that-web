@@ -56,7 +56,6 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  】】
   <div class="detail-container">
     <div class="look-info-container">
       <img
