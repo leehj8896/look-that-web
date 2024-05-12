@@ -104,39 +104,41 @@ onBeforeMount(async () => {
 
 <style scoped>
 .detail-container {
-  padding-left: calc(104/1920*100vw);
-  padding-right: calc(50/1920*100vw);
+  padding-left: calc(110/1920*100vw);
+  padding-right: calc(110/1920*100vw);
   padding-bottom: calc(100/1920*100vw);
+  margin-top: calc(85 / 1920 * 100vw);
 }
 .look-info-container {
-  margin-bottom: calc(60/1920*100vw);
+  margin-bottom: calc(190 / 1920 * 100vw);
 }
 .full-image-box {
-  width: calc(587 / 1920 * 100vw);
-  height: calc(739 / 1920 * 100vw);
+  width: calc(580 / 1920 * 100vw);
+  height: calc(740 / 1920 * 100vw);
   background-color: grey;
   display: inline-block;
   vertical-align: top;
 }
 .part-image-box {
   width: calc(390 / 1920 * 100vw);
-  height: calc(739 / 1920 * 100vw);
+  height: calc(740 / 1920 * 100vw);
   background-color: white;
   display: inline-block;
   vertical-align: top;
-  margin-left: calc(12.8 / 1920 * 100vw);
+  /* margin-left: calc(12.8 / 1920 * 100vw); */
   overflow: scroll;
 }
 .part-image {
   width: 100px;
 }
 .informations-box {
-  width: calc(659/1920*100vw);
-  height: calc(866/1920*100vw);
+  width: calc(660 / 1920 * 100vw);
+  height: calc(740 / 1920 * 100vw);
+  overflow: scroll;
   background-color: white;
   display: inline-block;
   vertical-align: top;
-  margin-left: calc(58/1920*100vw);
+  margin-left: calc(70 / 1920 * 100vw);
 }
 .information-title {
   font-size: calc(35/1920*100vw);
