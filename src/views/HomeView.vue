@@ -120,9 +120,7 @@ setLookItemsData()
     <div
       class="look-items-container"
     >
-      <h1 class="look-items-title">
-        LATEST Look <span>+</span>
-      </h1>
+      <h1 class="look-items-title">LATEST Look<span>+</span></h1>
       <p class="look-items-description">최신 룩</p>
       <div class="look-grid-container">
         <div
@@ -149,9 +147,7 @@ setLookItemsData()
     <div
       class="look-items-container"
     >
-      <h1 class="look-items-title">
-        Popular Look <span>+</span>
-      </h1>
+      <h1 class="look-items-title">Popular Look<span>+</span></h1>
       <p class="look-items-description">인기 룩</p>
       <div class="look-grid-container">
         <div
@@ -250,6 +246,9 @@ setLookItemsData()
 .look-items-title span {
   font-family: 'Danjo-bold-Regular'; 
   font-size: calc(23 / 1920 * 100vw);
+  margin-left: calc(19 / 1920 * 100vw);
+  position: relative;
+  bottom: calc(-2 / 1920 * 100vw);
 }
 .look-items-description {
   font-family: 'Danjo-bold-Regular';
