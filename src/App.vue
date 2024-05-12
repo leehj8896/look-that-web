@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+const onClickLogo = () => {
+  router.push({ name: 'home', })
+}
 </script>
 
 <template>
@@ -6,7 +12,9 @@
     <header class="header">
       <img 
         class="logo"
-        src="./assets/logo.webp" alt="">
+        src="./assets/logo.webp" alt=""
+        v-on:click="onClickLogo"
+      >
       <div class="search">
         <img class="search-icon" src="./assets/search_icon.webp">
         <input type="text" name="" id="" class="search-input">
