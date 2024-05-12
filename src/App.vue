@@ -60,7 +60,7 @@
   /* height: 105px; */
   height: calc(120 / 1920 * 100vw);
   /* top: 31.88px; */
-  top: calc(32 / 1920 * 100vw);
+  top: calc(20 / 1920 * 100vw);
 }
 .search {
   position: relative;
@@ -136,6 +136,6 @@
   font-size: calc(30 / 1920 * 100vw);
   position: relative;
   /* bottom: 10px; */
-  bottom: calc(10 / 1920 * 100vw);
+  bottom: calc(13 / 1920 * 100vw);
 }
 </style>
