@@ -62,12 +62,15 @@ onBeforeMount(async () => {
         class="full-image-box"
         v-bind:src="fullImageUrl"
       >
-      <div class="part-image-box">
-        <img
-          class="part-image"
-          v-bind:src="partImageUrl"
-          v-for="(partImageUrl, pid) in partImageList" :key="pid"
+      <div class="part-image-container">
+        <div
+          class='part-image'
+          v-for="(partImageUrl, partImageId) in partImageList"
+          :key="`partImg-${partImageId}`"
         >
+          <img
+            v-bind:src="partImageUrl">
+        </div>
       </div>
       <div class="informations-box">
         <div class="information-title">
@@ -111,6 +114,8 @@ onBeforeMount(async () => {
 }
 .look-info-container {
   margin-bottom: calc(190 / 1920 * 100vw);
+  display: flex;
+  flex-direction: row;
 }
 .full-image-box {
   width: calc(580 / 1920 * 100vw);
@@ -119,17 +124,32 @@ onBeforeMount(async () => {
   display: inline-block;
   vertical-align: top;
 }
-.part-image-box {
+.part-image-container {
   width: calc(390 / 1920 * 100vw);
   height: calc(740 / 1920 * 100vw);
-  background-color: white;
-  display: inline-block;
   vertical-align: top;
-  /* margin-left: calc(12.8 / 1920 * 100vw); */
   overflow: scroll;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.part-image-container > div:nth-child(3n) {
+  width: 100%;
+  grid-column: 1 / span 2;
+}
+.part-image-container > div:nth-child(3n) img {
+  width: 50%;
 }
 .part-image {
-  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.part-image img {
+  width: 100%;
+}
+.part-image-container::-webkit-scrollbar {
+  display: none; /* 웹킷(Chrome, Safari) 브라우저에서 스크롤바 감추기 */
 }
 .informations-box {
   width: calc(660 / 1920 * 100vw);
