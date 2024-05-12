@@ -28,6 +28,12 @@ div, p, header {
   font-family: 'Copperplate';
 }
 
+.myungjo-std-m {
+  font-family: adobe-myungjo-std, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
 .main-banner .v-window__container {
   height: 100%;
 }
