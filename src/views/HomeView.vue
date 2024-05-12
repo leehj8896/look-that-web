@@ -17,6 +17,7 @@ let bannerItems: Ref<any> = ref([
 ])
 const latestLookItems: Ref<any> = ref()
 const popularLookItems: Ref<any> = ref()
+const bannerIndex = ref()
 
 const onClickLookItem = (lookItem: LatestLook | PopularLook) => {
   console.log('onClickLookItem', 'lookItem', lookItem)
@@ -30,6 +31,11 @@ const onClickLookItem = (lookItem: LatestLook | PopularLook) => {
       lookId: lookItem.lookPostId,
     },
   })
+}
+
+const onClickDelimiter = (selectedIndex: number) => {
+  console.log('onClickDelimiter', 'selectedIndex', selectedIndex)
+  bannerIndex.value = selectedIndex
 }
 
 const setBannerData = async () => {
@@ -58,13 +64,33 @@ setLookItemsData()
 </script>
 
 <template>
-  <v-carousel class="main-banner">
+  <v-carousel
+    v-bind:hide-delimiters="true"
+    v-bind:show-arrows="false"
+    v-model="bannerIndex"
+    class="main-banner"
+  >
     <v-carousel-item
       cover
       v-bind:src="`${constants.API_URL}/banner/img/1234.png`"
       v-for="(bannerItem, index) in bannerItems" :key="index"
     >
     </v-carousel-item>
+    <div class="delimiters">
+      <button
+        v-for="(bannerItem, index) in bannerItems" :key="`delimiter-${index}`"
+        v-on:click="onClickDelimiter(index)"
+      >
+        <img
+          src="@/assets/banner_delimiter_selected.webp"
+          v-if="index === bannerIndex"
+        >
+        <img
+          src="@/assets/banner_delimiter_not_selected.webp"
+          v-else
+        >
+      </button>
+    </div>
   </v-carousel>
   <div class="main-contents">
     <div
@@ -139,6 +165,18 @@ setLookItemsData()
   height: calc(484 / 1920 * 100vw) !important;
   border: 5px solid #000000;
   opacity: 1;
+}
+.delimiters {
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  bottom: calc(20 / 1920 * 100vw);
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.delimiters button {
+  background: none;
+  border: none;
 }
 .main-contents {
   /* margin-top: 74.03px; */
