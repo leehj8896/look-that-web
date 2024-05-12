@@ -177,6 +177,7 @@ setLookItemsData()
 <style scoped>
 .main-banner {
   /* margin-left: 53px; */
+  margin-top: calc(28 / 1920 * 100vw);
   margin-left: calc(53 / 1920 * 100vw);
   margin-right: 42px;
   /* width: 1826px; */

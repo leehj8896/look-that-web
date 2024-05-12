@@ -49,37 +49,28 @@ const onClickLogo = () => {
   background-color: white;
 }
 .header {
-  /* height: 164.86px; */
   height: calc(165 / 1920 * 100vw);
   width: 100%;
   box-sizing: border-box;
-  display: flex;
-  align-items: start;
-  justify-content:space-between;
-  /* padding-left: 41.58px; */
-  padding-left: calc(42 / 1920 * 100vw);
-  /* padding-right: 69.23px; */
-  padding-right: calc(70 / 1920 * 100vw);
+  padding-left: calc(46 / 1920 * 100vw);
 }
 .logo {
-  position: relative;
-  /* width: 545px; */
-  width: calc(545 / 1920 * 100vw);
-  /* height: 105px; */
-  height: calc(120 / 1920 * 100vw);
-  /* top: 31.88px; */
-  top: calc(20 / 1920 * 100vw);
+  display: inline-block;
+  width: calc(655 / 1920 * 100vw);
+  height: calc(155 / 1920 * 100vw);
+  margin-right: calc(51 / 1920 * 100vw);
+  margin-top: calc(10 / 1920 * 100vw);
 }
 .search {
+  display: inline-block;
   position: relative;
-  /* top: 47.48px; */
-  top: calc(47/1920 * 100vw);
-  /* width: 892px; */
-  width: calc(892 / 1920 * 100vw);
-  /* height: 55px; */
+  width: calc(890 / 1920 * 100vw);
   height: calc(55/1920*100vw);
   border: 2px solid #000000;
   opacity: 1;
+  margin-top: calc(60 / 1920 * 100vw);
+  margin-right: calc(20 / 1920 * 100vw);
+  vertical-align: top;
 }
 .search-icon {
   height: calc(40 / 1920 * 100vw);
@@ -97,15 +88,15 @@ const onClickLogo = () => {
   width: calc(800 / 1920 * 100vw);
 }
 .header p {
+  display: inline-block;
   font-family: 'Danjo-bold-Regular';
-  position: relative;
-  /* top: 60px; */
-  top: calc(60/1920*100vw);
   letter-spacing: -0.95px;
   color: #000000;
   opacity: 1;
-  /* font-size: 25px; */
   font-size: calc(25 / 1920 * 100vw);
+  vertical-align: top;
+  margin-top: calc(73 / 1920 * 100vw);
+  margin-left: calc(30 / 1920 * 100vw);
 }
 .top-btn {
   font-family: 'Copperplate';
