@@ -72,7 +72,7 @@ onBeforeMount(async () => {
       <div class="informations-box">
         <div class="information-title">
           <p>
-            [<span class="eng">{{ lookDetail?.celebrity.group.name }}</span> <span class="kor">{{ lookDetail?.celebrity.name }}</span>]
+            <span class="myungjo-std-m">【【</span><span class="eng">{{ lookDetail?.celebrity.group.name }}</span> <span class="kor">{{ lookDetail?.celebrity.name }}</span><span class="myungjo-std-m">】】</span>
           </p>
         </div>
         <div
@@ -88,7 +88,9 @@ onBeforeMount(async () => {
       class="collection-container"
       v-for="(item, index) in [1,2,3]" :key="index"
     >
-      <p class="collection-title">[[{{ lookDetail?.celebrity.name }} 룩 모아보기]]</p>
+      <p class="collection-title">
+        <span class="myungjo-std-m">【【</span>{{ lookDetail?.celebrity.name }} 룩 모아보기<span class="myungjo-std-m">】】</span>
+      </p>
       <div class="collection-flex">
         <img
           class="collection-image"
