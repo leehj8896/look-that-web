@@ -33,6 +33,19 @@ const onClickLookItem = (lookItem: LatestLook | PopularLook) => {
   })
 }
 
+const onClickBannerArrow = (direction: 'left' | 'right') => {
+  console.log('onClickBannerArrow', 'direction', direction)
+  if (direction === 'left') {
+    if (bannerIndex.value - 1 >= 0) {
+      bannerIndex.value -= 1
+    }
+  } else if (direction === 'right') {
+    if (bannerIndex.value + 1 < bannerItems.value.length) {
+      bannerIndex.value += 1
+    }
+  }
+}
+
 const onClickDelimiter = (selectedIndex: number) => {
   console.log('onClickDelimiter', 'selectedIndex', selectedIndex)
   bannerIndex.value = selectedIndex
@@ -76,6 +89,16 @@ setLookItemsData()
       v-for="(bannerItem, index) in bannerItems" :key="index"
     >
     </v-carousel-item>
+    <div
+      class="banner-arrow-left"
+      v-on:click="onClickBannerArrow('left')"
+    >
+    </div>
+    <div
+      class="banner-arrow-right"
+      v-on:click="onClickBannerArrow('right')"
+    >
+    </div>
     <div class="delimiters">
       <button
         v-for="(bannerItem, index) in bannerItems" :key="`delimiter-${index}`"
@@ -166,9 +189,27 @@ setLookItemsData()
   border: 5px solid #000000;
   opacity: 1;
 }
+@media(hover: hover) and (pointer: fine) {
+  .banner-arrow-left:hover {
+    background: linear-gradient(to right, black, rgba(255, 255, 255, 0));
+  }
+  .banner-arrow-right:hover {
+    background: linear-gradient(to left, black, rgba(255, 255, 255, 0));
+  }
+}
+.banner-arrow-left {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 20%;
+}
+.banner-arrow-right {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 20%;
+}
 .delimiters {
-  margin-left: auto;
-  margin-right: auto;
   position: absolute;
   bottom: calc(20 / 1920 * 100vw);
   left: 50%;
