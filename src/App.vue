@@ -20,15 +20,15 @@
     <button class="top-btn">↑ TOP ↑</button>
     <nav class="navbar">
       <div>
-        <span class="navbar-arrow">→</span>
+        <span class="navbar-arrow">⇢</span>
         <span class="navbar-text">HOME</span>
       </div>
       <div>
-        <span class="navbar-arrow">→</span>
+        <span class="navbar-arrow">⇢</span>
         <span class="navbar-text">CHARACTER</span>
       </div>
       <div>
-        <span class="navbar-arrow">→</span>
+        <span class="navbar-arrow">⇢</span>
         <span class="navbar-text">CATEGORY</span>
       </div>
     </nav>
@@ -136,6 +136,6 @@
   font-size: calc(30 / 1920 * 100vw);
   position: relative;
   /* bottom: 10px; */
-  bottom: calc(13 / 1920 * 100vw);
+  bottom: calc(10 / 1920 * 100vw);
 }
 </style>
