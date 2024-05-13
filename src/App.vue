@@ -89,17 +89,17 @@ const onClickTopBtn = () => {
   width: calc(40 / 1920 * 100vw);
   position: absolute;
   top: calc(4 / 1920 * 100vw);
-  left: calc(4 / 1920 * 100vw);
+  left: calc(8 / 1920 * 100vw);
 }
 .search-input {
-  height: calc(36 / 1920 * 100vw);
+  height: calc(28 / 1920 * 100vw);
   position: absolute;
-  top: calc(6 / 1920 * 100vw);
-  left: calc(60 / 1920 * 100vw);
-  font-size: calc(25 / 16 * 1rem);
+  top: calc(5 / 1920 * 100vw);
+  left: calc(50 / 1920 * 100vw);
+  font-size: calc(32 / 1920 * 100vw);
   border: none; /* 테두리 없애기 */
   outline: none; /* 클릭 시 하이라이트 없애기 */
-  width: calc(800 / 1920 * 100vw);
+  width: calc(780 / 1920 * 100vw);
 }
 .header p {
   display: inline-block;
