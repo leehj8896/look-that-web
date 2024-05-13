@@ -184,7 +184,7 @@ setLookItemsData()
   width: calc(1826 / 1920 * 100vw);
   /* height: 484px; */
   height: calc(484 / 1920 * 100vw) !important;
-  border: 5px solid #000000;
+  border: calc(5 / 1920 * 100vw) solid #000000;
   opacity: 1;
 }
 @media(hover: hover) and (pointer: fine) {
