@@ -86,7 +86,7 @@ onBeforeMount(async () => {
       <div class="informations-box">
         <div class="information-title">
           <p>
-            <span class="myungjo-std-m">【【</span><span class="eng">{{ lookDetail?.celebrity.group.name }}</span> <span class="kor">{{ lookDetail?.celebrity.name }}</span><span class="myungjo-std-m">】】</span>
+            <span class="myungjo-std-m">【【</span><span class="eng group-name">{{ lookDetail?.celebrity.group.name }}</span> <span class="kor">{{ lookDetail?.celebrity.name }}</span><span class="myungjo-std-m">】】</span>
           </p>
         </div>
         <div
@@ -182,16 +182,20 @@ onBeforeMount(async () => {
 .information-title span {
   font-size: calc(30 / 1920 * 100vw);
 }
+.group-name {
+  text-transform: uppercase;
+}
 .information-item {
   margin-bottom: calc(24 / 1920 * 100vw);
 }
 .information-brand {
   font-size: calc(28/1920*100vw);
   margin-bottom: calc(10/1920*100vw);
+  text-transform: capitalize;
 }
 .information-name {
   font-size: calc(24/1920*100vw);
-  /* margin-bottom: calc(24/1920*100vw); */
+  text-transform: lowercase;
 }
 .collection-container {
   margin-bottom: calc(70/1920*100vw);
