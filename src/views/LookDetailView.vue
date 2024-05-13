@@ -171,6 +171,9 @@ onBeforeMount(async () => {
   vertical-align: top;
   margin-left: calc(70 / 1920 * 100vw);
 }
+.informations-box::-webkit-scrollbar {
+  display: none; /* 웹킷(Chrome, Safari) 브라우저에서 스크롤바 감추기 */
+}
 .information-title {
   font-size: calc(35/1920*100vw);
   margin-left: calc(20/1920*100vw);
