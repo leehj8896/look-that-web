@@ -5,6 +5,13 @@ const router = useRouter()
 const onClickLogo = () => {
   router.push({ name: 'home', })
 }
+
+const onClickTopBtn = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
+}
 </script>
 
 <template>
@@ -25,7 +32,12 @@ const onClickLogo = () => {
 
     <router-view/>
 
-    <button class="top-btn">↑ TOP ↑</button>
+    <button
+      class="top-btn"
+      v-on:click="onClickTopBtn"
+    >
+      ↑ TOP ↑
+    </button>
     <nav class="navbar">
       <div>
         <span class="navbar-arrow">⇢</span>
@@ -102,14 +114,12 @@ const onClickLogo = () => {
 }
 .top-btn {
   font-family: 'Copperplate';
-  /* width: 173px; */
   width: calc(173 / 1920 * 100vw);
-  /* height: 60px; */
   height: calc(60 / 1920 * 100vw);
   background-color: #FF671E;
   position: fixed;
-  bottom: 92px;
-  right: 32px;
+  bottom: calc(92 / 1920 * 100vw);
+  right: calc(32 / 1920 * 100vw);
   font-size: calc(27 / 1920 * 100vw);
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   border: 0;
