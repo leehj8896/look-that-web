@@ -66,7 +66,7 @@ const onClickLogo = () => {
   position: relative;
   width: calc(890 / 1920 * 100vw);
   height: calc(55/1920*100vw);
-  border: 2px solid #000000;
+  border: calc(2 / 1920 * 100vw) solid #000000;
   opacity: 1;
   margin-top: calc(60 / 1920 * 100vw);
   margin-right: calc(20 / 1920 * 100vw);
@@ -75,13 +75,15 @@ const onClickLogo = () => {
 .search-icon {
   height: calc(40 / 1920 * 100vw);
   width: calc(40 / 1920 * 100vw);
-  margin-top: calc(6 / 1920 * 100vw);
-  margin-left: calc(9 / 1920 * 100vw);
+  position: absolute;
+  top: calc(4 / 1920 * 100vw);
+  left: calc(4 / 1920 * 100vw);
 }
 .search-input {
-  height: 90%;
+  height: calc(36 / 1920 * 100vw);
   position: absolute;
-  top: 0;
+  top: calc(6 / 1920 * 100vw);
+  left: calc(60 / 1920 * 100vw);
   font-size: calc(25 / 16 * 1rem);
   border: none; /* 테두리 없애기 */
   outline: none; /* 클릭 시 하이라이트 없애기 */
