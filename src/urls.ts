@@ -1,6 +1,6 @@
 export const urls = {
   bannerList: '/banner/list',
-  lookMainPage: '/look/mainpage',
+  lookMain: '/look/main',
   lookDetail: '/look/post',
   lookSearch: '/look/search',
 }

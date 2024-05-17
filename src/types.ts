@@ -50,8 +50,54 @@ export interface PopularLook {
 }
 
 export interface ResLookMainPage {
-  popularLookList: Array<PopularLook>,
-  latestLookList: Array<LatestLook>,
+  mainLookPostList: Array<LookCategory>,
+}
+interface LookCategory {
+  categoryNameEN: string,
+  categoryNameKR: string,
+  lookPostList: Array<LookPost>,
+}
+
+interface LookPost {
+  lookPostId: string,
+  lookList: Array<Look>,
+  celebrity: Celebrity,
+  viewCount: string,
+}
+
+interface Look {
+  lookId: string,
+  lookDate: string, // 2024-03-05
+  itemList: Array<Item>,
+  fullImageUrlList: Array<Image>,
+}
+
+interface Image {
+  fullImageId: string,
+  imageUrl: string, // "/look/img/hyein.jpg"
+}
+
+interface Item {
+  lookItemListId: string,
+  item: {
+    itemId: string,
+    name: string,
+    brandName: string,
+    imageUrl: string,
+    price: string,
+    unit: string,
+    category: string
+  }
+}
+
+interface Celebrity {
+  celebrityId: string,
+  name: string,
+  viewCount: string,
+  group: {
+    groupId: string,
+    name: string,
+  }
 }
 
 export interface LatestLook {

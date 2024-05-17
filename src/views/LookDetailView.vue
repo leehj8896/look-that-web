@@ -19,7 +19,7 @@ const setLookDetailData = async () => {
     path: `${urls.lookDetail}/${lookId}`,
   })
   lookDetail.value = lookDetailData
-  fullImageUrl.value = `${constants.API_URL}${lookDetailData.lookList[0].imageUrlList[0]}`
+  fullImageUrl.value = `${constants.API_URL}${lookDetailData.lookList[0].fullImageUrlList[0].imageUrl}`
   partImageList.value = lookDetailData.lookList[0].itemList.map((partItem: any) => {
     return `${constants.API_URL}${partItem.item.imageUrl}`
   })
@@ -98,17 +98,14 @@ onBeforeMount(async () => {
         </div>
       </div>
     </div>
-    <div
-      class="collection-container"
-      v-for="(item, index) in [1,2,3]" :key="index"
-    >
+    <div class="collection-container">
       <p class="collection-title">
         <span class="myungjo-std-m">【【</span>{{ lookDetail?.celebrity.name }} 룩 모아보기<span class="myungjo-std-m">】】</span>
       </p>
       <div class="collection-flex">
         <img
           class="collection-image"
-          v-bind:src="`${constants.API_URL}${collectionItem.imageUrlList[0]}`"
+          v-bind:src="`${constants.API_URL}${collectionItem.fullImageUrlList[0].imageUrl}`"
           v-for="(collectionItem, cid) in collectionList" :key="cid"
         >
       </div>

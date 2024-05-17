@@ -15,8 +15,7 @@ let bannerItems: Ref<any> = ref([
     linkUrl: '',
   },
 ])
-const latestLookItems: Ref<any> = ref()
-const popularLookItems: Ref<any> = ref()
+const showedLookItems: Ref<any> = ref()
 const bannerIndex = ref()
 
 const onClickLookItem = (lookItem: LatestLook | PopularLook) => {
@@ -57,15 +56,8 @@ const setBannerData = async () => {
 }
 
 const setLookItemsData = async () => {
-  const lookItems: ResLookMainPage = await fetchData({ path: urls.lookMainPage, })
-  latestLookItems.value = [
-    ...lookItems.latestLookList,
-    ...lookItems.latestLookList,
-  ]
-  popularLookItems.value = [
-    ...lookItems.popularLookList,
-    ...lookItems.popularLookList,
-  ]
+  const { mainLookPostList, }: ResLookMainPage = await fetchData({ path: urls.lookMain, })
+  showedLookItems.value = mainLookPostList
 }
 
 setBannerData()
@@ -119,9 +111,10 @@ setLookItemsData()
   <div class="main-contents">
     <div
       class="look-items-container"
+      v-for="(lookCategory, index) in showedLookItems" :key="`look-items-${index}`"
     >
-      <h1 class="look-items-title">LATEST Look<span>+</span></h1>
-      <p class="look-items-description">최신 룩</p>
+      <h1 class="look-items-title">{{ lookCategory.categoryNameEN }}<span>+</span></h1>
+      <p class="look-items-description">{{ lookCategory.categoryNameKR }}</p>
       <div class="look-grid-container">
         <div
           class="look-grid-item"
@@ -130,21 +123,21 @@ setLookItemsData()
               '0' :
               'calc(74 / 1920 * 100vw)'
           }"
-          v-for="(item, index) in latestLookItems"
+          v-for="(lookPost, index) in lookCategory.lookPostList"
           v-bind:key="index"
-          v-on:click="onClickLookItem(item)"
+          v-on:click="onClickLookItem(lookPost)"
         >
           <img
             class="look-image"
-            v-bind:src="`${constants.API_URL}${item.lookList[0].imageUrlList[0]}`"
+            v-bind:src="`${constants.API_URL}${lookPost.lookList[0].fullImageUrlList[0].imageUrl}`"
           >
-          <p class="person-name">{{ item.celebrity.name }}</p>
-          <p class="brand-names">{{ item.lookList[0].itemList.map((e:any) => e.item.brandName).join(',') }}</p>
+          <p class="person-name">{{ lookPost.celebrity.name }}</p>
+          <p class="brand-names">{{ lookPost.lookList[0].itemList.map((e:any) => e.item.brandName).join(',') }}</p>
         </div>
       </div>
       <img class="look-items-arrow" src="@/assets/arrow_down.webp" alt="">
     </div>
-    <div
+    <!-- <div
       class="look-items-container"
     >
       <h1 class="look-items-title">Popular Look<span>+</span></h1>
@@ -170,7 +163,7 @@ setLookItemsData()
         </div>
       </div>
       <img class="look-items-arrow" src="@/assets/arrow_down.webp" alt="">
-    </div>
+    </div> -->
   </div>
 </template>
 
