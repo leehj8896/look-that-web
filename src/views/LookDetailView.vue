@@ -13,6 +13,7 @@ const fullImageUrl = ref()
 const partImageList = ref()
 const itemInfoList = ref()
 const collectionList = ref()
+const brandCollectionList = ref()
 
 const setLookDetailData = async () => {
   const lookDetailData = await fetchData({
@@ -58,6 +59,26 @@ const setCollectionData = async () => {
     ...collectionData[0].lookList,
     ...collectionData[0].lookList,
   ]
+
+  const promises = lookDetail.value.lookList[0].itemList.map(async (partItem: any) => {
+    const { lookPostList } = await fetchData({ path: `${urls.lookSearchBrand}/${partItem.item.brandName}`, })
+    return {
+      brandName: partItem.item.brandName,
+      lookPostList,
+    }
+  })
+  const responses = await Promise.allSettled(promises)
+  brandCollectionList.value = responses.map((response) => {
+    if (response.status === 'fulfilled') {
+      return response.value
+    } else {
+      console.error(`Failed to fetch data for brand: ${response.reason}`)
+      return {
+        brandName: '',
+        lookPostList: [],
+      }
+    }
+  })
 }
 
 onBeforeMount(async () => {
@@ -107,6 +128,21 @@ onBeforeMount(async () => {
           class="collection-image"
           v-bind:src="`${constants.API_URL}${collectionItem.fullImageUrlList[0].imageUrl}`"
           v-for="(collectionItem, cid) in collectionList" :key="cid"
+        >
+      </div>
+    </div>
+    <div
+      class="collection-container"
+      v-for="(brandCollection, index) in brandCollectionList" :key="`collection-container-${index}`"
+    >
+      <p class="collection-title">
+        <span class="myungjo-std-m">【【</span>{{ brandCollection.brandName }} 룩 모아보기<span class="myungjo-std-m">】】</span>
+      </p>
+      <div class="collection-flex">
+        <img
+          class="collection-image"
+          v-for="(lookPost, bid) in brandCollection.lookPostList" :key="`brand-collection-image-${bid}`"
+          v-bind:src="`${constants.API_URL}${lookPost.lookList[0].fullImageUrlList[0].imageUrl}`"
         >
       </div>
     </div>

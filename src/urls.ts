@@ -3,4 +3,6 @@ export const urls = {
   lookMain: '/look/main',
   lookDetail: '/look/post',
   lookSearch: '/look/search',
+  lookSearchBrand: '/look/search/brand-name',
+  lookSearchCelebrity: '/look/search/celebrity-id'
 }
