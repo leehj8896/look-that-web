@@ -26,37 +26,37 @@ const setPersonCardMockData = async () => {
   {
       groupName: 'NEWJEANS',
       personName: '혜인1',
-      style: { backgroundColor: 'red', },
+      imageUrl: 'src/assets/wooseok.webp',
     },
     {
       groupName: 'NEWJEANS',
       personName: '혜인2',
-      style: { backgroundColor: 'blue', },
+      imageUrl: 'src/assets/hyein.png',
     },
     {
       groupName: 'NEWJEANS',
       personName: '혜인3',
-      style: { backgroundColor: 'green', },
+      imageUrl: 'src/assets/paul_kim.jpg',
     },
     {
       groupName: 'NEWJEANS',
       personName: '혜인4',
-      style: { backgroundColor: 'yellow', },
+      imageUrl: 'src/assets/wooseok.webp',
     },
     {
       groupName: 'NEWJEANS',
       personName: '혜인5',
-      style: { backgroundColor: 'purple', },
+      imageUrl: 'src/assets/hyein.png',
     },
     {
       groupName: 'NEWJEANS',
       personName: '혜인6',
-      style: { backgroundColor: 'black', },
+      imageUrl: 'src/assets/paul_kim.jpg',
     },
     {
       groupName: 'NEWJEANS',
       personName: '혜인7',
-      style: { backgroundColor: 'white', },
+      imageUrl: 'src/assets/hyein.png',
     },
   ]
 }
@@ -98,6 +98,30 @@ const setPersonCardData = async () => {
 
 }
 
+/**
+ * @param cardIndex 0, 1, 2, 3, 4, 5, 6
+ */
+const getCardStyle = (cardIndex: number) => {
+  const indexDiff = centerIndex - cardIndex // 3,2,1,0,1,2,3
+  const zIndex = 4 - Math.abs(indexDiff) // 1,2,3,4,3,2,1
+  const opacity = zIndex / 4
+  const height = `${zIndex * 100}px`
+  const width = height
+  const top = '50%'
+  const left = `calc(50% - ${indexDiff * 100}px)`
+  const transform = 'translateX(-50%) translateY(-50%)'
+
+  return {
+    zIndex,
+    opacity,
+    height,
+    width,
+    top,
+    left,
+    transform,
+  }
+}
+
 onBeforeMount(async () => {
   await setPersonCardData()
   // await setCollectionData()
@@ -118,7 +142,7 @@ onMounted(() => {
 
       const centerCard = cardList.children[centerIndex]
       const offsetX = moveX - downX; // 마우스와 박스 사이의 거리
-      centerCard.style.transform = `translateX(${offsetX}px)`
+      centerCard.style.transform = `translateX(calc(-50% + ${offsetX}px)) translateY(-50%)`
     }
   })
 
@@ -143,7 +167,7 @@ onMounted(() => {
     }
 
     const centerCard = cardList.children[centerIndex]
-    centerCard.style.transform = `translateX(0)`
+    centerCard.style.transform = `translateX(-50%) translateY(-50%)`
     downX = 0
   })
 })
@@ -158,12 +182,12 @@ onMounted(() => {
       <div
         class="person-card"
         v-for="(item, cardIndex) in personCardList" :key="item.personName"
-        v-bind:style="{
-          ...item.style,
-          zIndex: 3 - Math.abs(centerIndex - cardIndex),
-        }"
+        v-bind:style="getCardStyle(cardIndex)"
       >
-        <p>{{ item.personName }}</p>
+        <img 
+          draggable="false"
+          v-bind:src="item.imageUrl"
+        >
       </div>
     </div>
   </div>
@@ -171,15 +195,15 @@ onMounted(() => {
 
 <style scoped>
 .person-container {
-  height: 200px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  height: 500px;
+  position: relative;
 }
 .person-card {
-  height: 100px;
-  width: 100px;
-  border: solid;
+  position: absolute;
+}
+.person-card img {
+  height: 100%;
+  width: 100%;
 }
 </style>
