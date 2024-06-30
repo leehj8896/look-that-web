@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import CharacterCardBanner from '@/views/CharacterCardBanner.vue'
+import CharacterList from '@/views/CharacterList.vue'
 
 </script>
 
 <template>
   <div class="container">
     <character-card-banner/>
+    <character-list/>
   </div>
 </template>
 
