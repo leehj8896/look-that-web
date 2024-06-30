@@ -12,6 +12,10 @@ const onClickTopBtn = () => {
     behavior: 'smooth',
   })
 }
+
+const onClickCharacter = () => {
+  router.push({ name: 'character', })
+}
 </script>
 
 <template>
@@ -43,7 +47,7 @@ const onClickTopBtn = () => {
         <span class="navbar-arrow">⇢</span>
         <span class="navbar-text">HOME</span>
       </div>
-      <div>
+      <div v-on:click="onClickCharacter">
         <span class="navbar-arrow">⇢</span>
         <span class="navbar-text">CHARACTER</span>
       </div>
