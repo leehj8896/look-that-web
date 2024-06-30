@@ -21,6 +21,7 @@ const jobFilterList = ref([
   { text: '래퍼', selected: false,},
   { text: '프로듀서', selected: false,},
 ])
+const selectSort = ref('name')
 
 const onClickFilterBadge = (filter: any) => {
   filter.selected = !filter.selected
@@ -59,7 +60,15 @@ onBeforeMount(() => { /** */ })
       />
     </div>
     <!-- 정렬 -->
+    <select 
+      v-model="selectSort"
+      class="select-sort"
+    >
+      <option value="name">이름순</option>
+      <option value="age">나이순</option>
+    </select>
     <!-- 인물 목록 -->
+    <div style="height: 500px; width: 100%;"></div>
   </div>
 </template>
 
@@ -73,5 +82,15 @@ onBeforeMount(() => { /** */ })
   flex-direction: row;
   gap: 10px;
   margin-bottom: 20px;
+}
+.select-sort {
+  -webkit-appearance: none; /* Chrome, Safari, Opera */
+  -moz-appearance: none; /* Firefox */
+  appearance: none;
+  outline: none; /* 포커스 아웃라인 제거 */
+  border: none; /* 테두리 제거 */
+  box-shadow: none; /* 그림자 제거 */
+  background: transparent; /* 배경 제거 */
+  cursor: pointer; /* 클릭 시 포인터 커서 표시 */
 }
 </style>
