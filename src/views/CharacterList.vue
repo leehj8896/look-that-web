@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CharacterFilterBadge from '@/components/CharacterFilterBadge.vue'
-import { onBeforeMount, ref } from 'vue';
+import { onBeforeMount, ref, type Ref } from 'vue';
 
 const genderFilterList = ref([
   { text: '남자', selected: false,},
@@ -22,12 +22,36 @@ const jobFilterList = ref([
   { text: '프로듀서', selected: false,},
 ])
 const selectSort = ref('name')
+const characterList: Ref<any[]> = ref([])
+
+const isLocalhost = () => {
+    const hostname = window.location.hostname;
+    return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1';
+}
 
 const onClickFilterBadge = (filter: any) => {
   filter.selected = !filter.selected
 }
 
-onBeforeMount(() => { /** */ })
+const setMockCharacterList = () => {
+  for (let i=0; i<20; i++) {
+    characterList.value.push({
+      name: `newjeans-${i}`,
+      imageUrl: 'src/assets/newjeans.jpg',
+      gender: '',
+    })
+  }
+}
+
+const setCharacterList = () => {
+  if (isLocalhost()) {
+    setMockCharacterList()
+  }
+}
+
+onBeforeMount(() => {
+  setCharacterList()
+})
 </script>
 
 <template>
@@ -68,7 +92,14 @@ onBeforeMount(() => { /** */ })
       <option value="age">나이순</option>
     </select>
     <!-- 인물 목록 -->
-    <div style="height: 500px; width: 100%;"></div>
+    <div class="character-list-container">
+      <div 
+        class="character-box"
+        v-for="character in characterList" :key="character.name"
+      >
+        <img v-bind:src="character.imageUrl">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -76,6 +107,7 @@ onBeforeMount(() => { /** */ })
 .character-list {
   padding-left: 30px;
   padding-right: 30px;
+  padding-bottom: 100px;
 }
 .badge-list {
   display: flex;
@@ -92,5 +124,17 @@ onBeforeMount(() => { /** */ })
   box-shadow: none; /* 그림자 제거 */
   background: transparent; /* 배경 제거 */
   cursor: pointer; /* 클릭 시 포인터 커서 표시 */
+  margin-bottom: 20px;
+}
+.character-list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+.character-box {
+}
+.character-box img {
+  width: 100%;
+  height: 100%;
 }
 </style>
