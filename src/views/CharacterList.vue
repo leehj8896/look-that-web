@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import CharacterFilterBadge from '@/components/CharacterFilterBadge.vue'
 import { onBeforeMount, ref, type Ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
 
 const genderFilterList = ref([
   { text: '남자', selected: false,},
@@ -31,6 +34,15 @@ const isLocalhost = () => {
 
 const onClickFilterBadge = (filter: any) => {
   filter.selected = !filter.selected
+}
+
+const onClickCharacter = (character: any) => {
+  router.push({
+    name: 'character-detail',
+    params: {
+      characterName: character.name,
+    },
+  })
 }
 
 const setMockCharacterList = () => {
@@ -96,6 +108,7 @@ onBeforeMount(() => {
       <div 
         class="character-box"
         v-for="character in characterList" :key="character.name"
+        v-on:click="onClickCharacter(character)"
       >
         <img v-bind:src="character.imageUrl">
       </div>
