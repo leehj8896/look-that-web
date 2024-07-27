@@ -12,7 +12,7 @@ body {
   margin: 0;
   width: fit-content;
 }
-div, p, header {
+div, p, header, section {
   margin: 0;
   box-sizing: border-box;
 }
