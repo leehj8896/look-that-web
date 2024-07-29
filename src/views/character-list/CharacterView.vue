@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import CharacterCardBanner from '@/views/CharacterCardBanner.vue'
-import CharacterList from '@/views/CharacterList.vue'
+import CharacterCardBanner from '@/views/character-list/CharacterCardBanner.vue'
+import CharacterList from '@/views/character-list/CharacterList.vue'
 
 </script>
 
