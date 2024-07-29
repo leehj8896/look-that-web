@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import hyeinImage from '@/assets/hyein.png'
+import CharacterDetailBadge from '@/views/character-detail/CharacterDetailBadge.vue'
+import { ref } from 'vue';
 
 const route = useRoute()
 const characterName = route.params.characterName
@@ -40,6 +42,55 @@ for (let i = 0; i < 5; i++) {
 	})
 }
 
+const moodBadgeList = ref([
+{
+		text: '스트릿',
+		selected: true,
+	},
+	{
+		text: 'y2k',
+		selected: false,
+	},
+	{
+		text: '힙합',
+		selected: false,
+	},
+])
+const spotBadgeList = ref([
+{
+		text: '음방',
+		selected: true,
+	},
+	{
+		text: '출퇴근',
+		selected: false,
+	},
+	{
+		text: '공항',
+		selected: false,
+	},
+])
+
+const onClickMoodBadge = (selectedMoodBadge: any) => {
+	moodBadgeList.value.forEach((moodBadge) => {
+		if (moodBadge.text === selectedMoodBadge.text) {
+			moodBadge.selected = true
+		} else {
+			moodBadge.selected = false
+		}
+	})
+}
+
+const onClickSpotBadge = (selectedSpotBadge: any) => {
+	spotBadgeList.value.forEach((spotBadge) => {
+		if (spotBadge.text === selectedSpotBadge.text) {
+			spotBadge.selected = true
+		} else {
+			spotBadge.selected = false
+		}
+	})
+}
+
 </script>
 
 <template>
@@ -64,9 +115,12 @@ for (let i = 0; i < 5; i++) {
 		<section class="mood-look-container">
 			<p class="section-title">MAIN MOOD</p>
 			<div class="badge-list">
-				<p class="badge">스트릿</p>
-				<p class="badge">y2k</p>
-				<p class="badge">힙합</p>
+				<character-detail-badge 
+					v-for="moodBadge in moodBadgeList"
+					v-bind:text="moodBadge.text"
+					v-bind:selected="moodBadge.selected"
+					v-on:click="onClickMoodBadge(moodBadge)"
+				/>
 			</div>
 			<div class="mood-look-list">
 				<p class="spread-btn">스트릿 LOOK +</p>
@@ -92,9 +146,12 @@ for (let i = 0; i < 5; i++) {
 		<section class="spot-look-container">
 			<p class="section-title">MAIN SPOT</p>
 			<div class="badge-list">
-				<p class="badge">음방</p>
-				<p class="badge">출퇴근</p>
-				<p class="badge">공항</p>
+				<character-detail-badge 
+					v-for="spotBadge in spotBadgeList"
+					v-bind:text="spotBadge.text"
+					v-bind:selected="spotBadge.selected"
+					v-on:click="onClickSpotBadge(spotBadge)"
+				/>
 			</div>
 			<div class="spot-look-list">
 				<p class="spread-btn">공항 LOOK +</p>
@@ -146,9 +203,8 @@ for (let i = 0; i < 5; i++) {
 }
 
 .banner-person {
-	width: 200px;
+	width: 220px;
 	height: 300px;
-	border: solid;
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -156,15 +212,17 @@ for (let i = 0; i < 5; i++) {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: start;
 }
 
 .person-img {
-	width: 100px;
-	height: 100px;
+	width: 100%;
 	border: solid;
+	margin-bottom: 10px;
 }
-
+.person-description {
+	font-weight: bold;
+}
 .main-look-container {
 	width: 100%;
 	border: solid;
@@ -196,12 +254,6 @@ for (let i = 0; i < 5; i++) {
 	display: flex;
 	justify-content: center;
 	gap: 50px;
-}
-.badge {
-	width: 100px;
-	border: solid;
-	border-radius: 50%;
-	text-align: center;
 }
 .mood-look-grid {
 	display: grid;
