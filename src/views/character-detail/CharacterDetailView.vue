@@ -187,7 +187,6 @@ const onClickSpotBadge = (selectedSpotBadge: any) => {
 .banner-container {
 	width: 100%;
 	height: 400px;
-	border: solid;
 	position: relative;
 }
 
@@ -217,7 +216,6 @@ const onClickSpotBadge = (selectedSpotBadge: any) => {
 
 .person-img {
 	width: 100%;
-	border: solid;
 	margin-bottom: 10px;
 }
 .person-description {
@@ -225,7 +223,6 @@ const onClickSpotBadge = (selectedSpotBadge: any) => {
 }
 .main-look-container {
 	width: 100%;
-	border: solid;
 	padding-top: 20px;
 	padding-left: 100px;
 	padding-right: 100px;
@@ -249,7 +246,6 @@ const onClickSpotBadge = (selectedSpotBadge: any) => {
 	padding-left: 100px;
 	padding-right: 100px;
 	padding-bottom: 20px;
-	border: solid;
 }
 .section-title {
 	text-align: center;
