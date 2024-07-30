@@ -181,12 +181,12 @@ const onClickSpotBadge = (selectedSpotBadge: any) => {
 .container {
 	width: 100%;
 	height: 100%;
-	padding-bottom: 70px;
+	padding-bottom: 40px;
 }
 
 .banner-container {
 	width: 100%;
-	height: 500px;
+	height: 400px;
 	border: solid;
 	position: relative;
 }
@@ -226,8 +226,10 @@ const onClickSpotBadge = (selectedSpotBadge: any) => {
 .main-look-container {
 	width: 100%;
 	border: solid;
+	padding-top: 20px;
 	padding-left: 100px;
 	padding-right: 100px;
+	padding-bottom: 20px;
 }
 
 .main-look-grid {
@@ -243,8 +245,10 @@ const onClickSpotBadge = (selectedSpotBadge: any) => {
 }
 .mood-look-container {
 	width: 100%;
+	padding-top: 20px;
 	padding-left: 100px;
 	padding-right: 100px;
+	padding-bottom: 20px;
 	border: solid;
 }
 .section-title {
@@ -254,6 +258,7 @@ const onClickSpotBadge = (selectedSpotBadge: any) => {
 	display: flex;
 	justify-content: center;
 	gap: 50px;
+	margin-bottom: 10px;
 }
 .mood-look-grid {
 	display: grid;
@@ -269,8 +274,10 @@ const onClickSpotBadge = (selectedSpotBadge: any) => {
 	gap: 10px;
 }
 .spot-look-container {
+	padding-top: 20px;
 	padding-left: 100px;
 	padding-right: 100px;
+	padding-bottom: 20px;
 }
 .spot-item-grid {
 	display: grid;
@@ -279,5 +286,8 @@ const onClickSpotBadge = (selectedSpotBadge: any) => {
 }
 .spot-img {
 	width: 100%;
+}
+.select-order {
+	margin-bottom: 10px;
 }
 </style>
