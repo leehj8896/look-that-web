@@ -56,9 +56,7 @@ const setMockCharacterList = () => {
 }
 
 const setCharacterList = () => {
-  if (isLocalhost()) {
-    setMockCharacterList()
-  }
+  setMockCharacterList()
 }
 
 onBeforeMount(() => {
