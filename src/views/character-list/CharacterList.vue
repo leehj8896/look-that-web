@@ -2,6 +2,7 @@
 import CharacterFilterBadge from '@/components/CharacterFilterBadge.vue'
 import { onBeforeMount, ref, type Ref } from 'vue';
 import { useRouter } from 'vue-router';
+import newjeansImage from '@/assets/newjeans.jpg'
 
 const router = useRouter()
 
@@ -49,7 +50,7 @@ const setMockCharacterList = () => {
   for (let i=0; i<20; i++) {
     characterList.value.push({
       name: `newjeans-${i}`,
-      imageUrl: 'src/assets/newjeans.jpg',
+      imageUrl: newjeansImage,
       gender: '',
     })
   }

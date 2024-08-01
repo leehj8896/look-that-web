@@ -4,6 +4,9 @@ import { urls } from '@/urls'
 import { fetchData } from '@/utils'
 import { onBeforeMount, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import wooseok from '@/assets/wooseok.webp'
+import hyein from '@/assets/hyein.png'
+import paul_kim from '@/assets/paul_kim.jpg'
 
 // const route = useRoute()
 
@@ -26,37 +29,37 @@ const setPersonCardMockData = async () => {
   {
       groupName: 'NEWJEANS',
       personName: '혜인1',
-      imageUrl: 'src/assets/wooseok.webp',
+      imageUrl: wooseok,
     },
     {
       groupName: 'NEWJEANS',
       personName: '혜인2',
-      imageUrl: 'src/assets/hyein.png',
+      imageUrl: hyein,
     },
     {
       groupName: 'NEWJEANS',
       personName: '혜인3',
-      imageUrl: 'src/assets/paul_kim.jpg',
+      imageUrl: paul_kim,
     },
     {
       groupName: 'NEWJEANS',
       personName: '혜인4',
-      imageUrl: 'src/assets/wooseok.webp',
+      imageUrl: wooseok,
     },
     {
       groupName: 'NEWJEANS',
       personName: '혜인5',
-      imageUrl: 'src/assets/hyein.png',
+      imageUrl: hyein,
     },
     {
       groupName: 'NEWJEANS',
       personName: '혜인6',
-      imageUrl: 'src/assets/paul_kim.jpg',
+      imageUrl: paul_kim,
     },
     {
       groupName: 'NEWJEANS',
       personName: '혜인7',
-      imageUrl: 'src/assets/hyein.png',
+      imageUrl: hyein,
     },
   ]
 }
@@ -90,12 +93,7 @@ const fetchPersonCardMockData = () => {
 }
 
 const setPersonCardData = async () => {
-  if (isLocalhost()) {
-    setPersonCardMockData()
-  } else {
-    fetchPersonCardMockData()
-  }
-
+  setPersonCardMockData()
 }
 
 /**
