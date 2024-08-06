@@ -90,10 +90,13 @@ interface Item {
   }
 }
 
-interface Celebrity {
+export interface Celebrity {
   celebrityId: string,
   name: string,
   viewCount: string,
+  imageUrl: string,
+  age: number,
+  gender: 'f' | 'm',
   group: {
     groupId: string,
     name: string,

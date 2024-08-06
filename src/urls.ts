@@ -4,5 +4,6 @@ export const urls = {
   lookDetail: '/look/post',
   lookSearch: '/look/search',
   lookSearchBrand: '/look/search/brand-name',
-  lookSearchCelebrity: '/look/search/celebrity-id'
+  lookSearchCelebrity: '/look/search/celebrity-id',
+  celebritySearch: '/celebrity/search',
 }

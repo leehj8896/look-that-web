@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import CharacterFilterBadge from '@/components/CharacterFilterBadge.vue'
-import { onBeforeMount, ref, type Ref } from 'vue';
+import { onBeforeMount, ref, watch, type Ref } from 'vue';
 import { useRouter } from 'vue-router';
-import newjeansImage from '@/assets/newjeans.jpg'
+import { urls } from '@/urls'
+import { fetchData } from '@/utils'
+import type { Celebrity } from '@/types'
+import { constants } from '@/constants'
 
 const router = useRouter()
 
@@ -46,18 +49,31 @@ const onClickCharacter = (character: any) => {
   })
 }
 
-const setMockCharacterList = () => {
-  for (let i=0; i<20; i++) {
-    characterList.value.push({
-      name: `newjeans-${i}`,
-      imageUrl: newjeansImage,
-      gender: '',
-    })
-  }
-}
+watch(selectSort, () => {
+  console.log('selectSort', selectSort.value)
+  characterList.value.sort((a: Celebrity, b: Celebrity) => {
+    if (selectSort.value === 'name') {
+      if (a.name > b.name) return 1
+      if (a.name === b.name) return 0
+      if (a.name < b.name) return -1
+    } else if (selectSort.value === 'age') {
+      return a.age - b.age 
+    }
+    return 0
+  })
+})
 
-const setCharacterList = () => {
-  setMockCharacterList()
+const setCharacterList = async () => {
+  const celebrityList = await fetchData({ path: urls.celebritySearch, })
+
+  celebrityList.forEach((celebrity: Celebrity) => {
+    characterList.value.push({
+      name: celebrity.name,
+      imageUrl: `${constants.API_URL}${celebrity.imageUrl}`,
+      gender: celebrity.gender,
+      age: celebrity.age,
+    })
+  })
 }
 
 onBeforeMount(() => {
