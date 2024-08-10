@@ -6,6 +6,7 @@ import { urls } from '@/urls'
 import { fetchData } from '@/utils'
 import type { Celebrity } from '@/types'
 import { constants } from '@/constants'
+import type { CelebritySearchParamDTO, Filter } from '@/views/character-list/types.ts'
 
 const router = useRouter()
 
@@ -36,8 +37,11 @@ const isLocalhost = () => {
     return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1';
 }
 
-const onClickFilterBadge = (filter: any) => {
+const onClickFilterBadge = (filter: Filter) => {
+  console.log('onClickFilterBadge', 'filter', filter)
   filter.selected = !filter.selected
+
+  setCharacterList()
 }
 
 const onClickCharacter = (character: any) => {
@@ -64,8 +68,13 @@ watch(selectSort, () => {
 })
 
 const setCharacterList = async () => {
-  const celebrityList = await fetchData({ path: urls.celebritySearch, })
+  const celebritySearchParamDTO: CelebritySearchParamDTO = {}
+  const celebrityList = await fetchData({ 
+    path: urls.celebritySearch, 
+    query: celebritySearchParamDTO,
+  })
 
+  characterList.value = []
   celebrityList.forEach((celebrity: Celebrity) => {
     characterList.value.push({
       name: celebrity.name,
