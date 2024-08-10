@@ -2,7 +2,7 @@
 import { constants } from '@/constants'
 import { urls } from '@/urls'
 import { fetchData } from '@/utils'
-import { onBeforeMount, onMounted, ref } from 'vue'
+import { onBeforeMount, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import wooseok from '@/assets/wooseok.webp'
 import hyein from '@/assets/hyein.png'
@@ -120,6 +120,49 @@ const getCardStyle = (cardIndex: number) => {
   }
 }
 
+const handleMouseDown = (e: MouseEvent) => {
+  downX = e.clientX; // 클릭 시 x 좌표 저장
+  console.log('downX', downX)
+}
+
+const handleMouseLeave = (e: MouseEvent) => {
+  const cardList = slideBanner.value
+  const moveX = e.clientX; // 클릭 시 x 좌표 저장
+  if (downX > 0) {
+    console.log('moveX', moveX)
+
+    const centerCard = cardList.children[centerIndex]
+    const offsetX = moveX - downX; // 마우스와 박스 사이의 거리
+    centerCard.style.transform = `translateX(calc(-50% + ${offsetX}px)) translateY(-50%)`
+  }
+}
+
+const handleMouseUp = (e: MouseEvent) => {
+  const cardList = slideBanner.value
+  const upX = e.clientX; // 클릭 시 x 좌표 저장
+  console.log('upX', upX)
+
+  if (downX > 0) {
+    const diff = downX - upX
+    console.log('diff', diff)
+    
+    // 왼쪽으로
+    if (diff > 기준값) {
+      const poped = personCardList.value.shift() // 빼기
+      personCardList.value.push(poped) // 넣기
+    }
+    // 오른쪽으로
+    else if (diff < -기준값) {
+      const poped = personCardList.value.pop() // 빼기
+      personCardList.value.splice(0, 0, poped) // 넣기
+    }
+  }
+
+  const centerCard = cardList.children[centerIndex]
+  centerCard.style.transform = `translateX(-50%) translateY(-50%)`
+  downX = 0
+}
+
 onBeforeMount(async () => {
   await setPersonCardData()
   // await setCollectionData()
@@ -128,46 +171,18 @@ onBeforeMount(async () => {
 onMounted(() => {
   const cardList = slideBanner.value
 
-  cardList.addEventListener('mousedown', (e: MouseEvent) => {
-    downX = e.clientX; // 클릭 시 x 좌표 저장
-    console.log('downX', downX)
-  })
+  cardList.addEventListener('mousedown', handleMouseDown)
+  cardList.addEventListener('mousemove', handleMouseLeave)
+  document.addEventListener('mouseup', handleMouseUp)
+})
 
-  cardList.addEventListener('mousemove', (e: MouseEvent) => {
-    const moveX = e.clientX; // 클릭 시 x 좌표 저장
-    if (downX > 0) {
-      console.log('moveX', moveX)
+onBeforeUnmount(() => {
+  console.log('onBeforeUnmount')
+  const cardList = slideBanner.value
 
-      const centerCard = cardList.children[centerIndex]
-      const offsetX = moveX - downX; // 마우스와 박스 사이의 거리
-      centerCard.style.transform = `translateX(calc(-50% + ${offsetX}px)) translateY(-50%)`
-    }
-  })
-
-  document.addEventListener('mouseup', (e: MouseEvent) => {
-    const upX = e.clientX; // 클릭 시 x 좌표 저장
-    console.log('upX', upX)
-
-    if (downX > 0) {
-      const diff = downX - upX
-      console.log('diff', diff)
-      
-      // 왼쪽으로
-      if (diff > 기준값) {
-        const poped = personCardList.value.shift() // 빼기
-        personCardList.value.push(poped) // 넣기
-      }
-      // 오른쪽으로
-      else if (diff < -기준값) {
-        const poped = personCardList.value.pop() // 빼기
-        personCardList.value.splice(0, 0, poped) // 넣기
-      }
-    }
-
-    const centerCard = cardList.children[centerIndex]
-    centerCard.style.transform = `translateX(-50%) translateY(-50%)`
-    downX = 0
-  })
+  cardList.removeEventListener('mousedown', handleMouseDown)
+  cardList.removeEventListener('mousemove', handleMouseLeave)
+  document.removeEventListener('mouseup', handleMouseUp)
 })
 </script>
 
